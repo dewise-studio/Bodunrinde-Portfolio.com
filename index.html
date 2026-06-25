@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodunrinde Joseph | Executive Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS variables to control themes cleanly */
+        :root {
+            --bg-primary: #F5F5F5;
+            --bg-card: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-muted: #666666;
+            --border-color: #E5E5E5;
+        }
+        .dark {
+            --bg-primary: #1A1A1A;
+            --bg-card: #222222;
+            --text-main: #FFFFFF;
+            --text-muted: #B0B0B0;
+            --border-color: #2A2A2A;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .bg-card-custom { background-color: var(--bg-card); border-color: var(--border-color); }
+        .text-muted-custom { color: var(--text-muted); }
+        .border-custom { border-color: var(--border-color); }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Infinite marquee animation rules */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+        .animate-marquee:hover { animation-play-state: paused; }
+    </style>
+</head>
+<body class="selection:bg-[#D4AF37] selection:text-black tracking-normal overflow-x-hidden">
+
+    <!-- --- SCROLL PROGRESS BAR --- -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-[#D4AF37] z-50 transition-all duration-100 shadow-[0_0_10px_#D4AF37]" style="width: 0%;"></div>
+
+    <!-- --- FLOATING WHATSAPP HEADPHONE ASSISTANT --- -->
+    <a href="https://wa.me/2349133588595?text=Hello%20Mr.%20Bodunrinde,%20I%20viewed%20your%20portfolio%20and%20would%20like%20to%20hire%20your%20services%20regarding%20a%20project." 
+       target="_blank" 
+       class="fixed bottom-6 left-6 z-50 bg-[#D4AF37] text-black p-4 rounded-full shadow-[0_4px_20px_rgba(212,175,55,0.4)] hover:bg-[#F4D03F] hover:scale-110 active:scale-95 transition-all duration-300 group flex items-center justify-center"
+       title="Hire Me on WhatsApp">
+        <i class="fa-solid fa-headset text-xl animate-bounce"></i>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap text-xs font-bold font-poppins pl-0 group-hover:pl-2 tracking-wider uppercase text-black">Hire Consultant</span>
+    </a>
+
+    <!-- --- NAVIGATION --- -->
+    <nav class="fixed w-full top-0 z-40 bg-card-custom/90 backdrop-blur-md border-b border-custom transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logotype Grid -->
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <img src="./dejoeTech.png" alt="dejoeTech Logo" class="h-10 w-10 object-contain rounded-xs transform group-hover:rotate-6 transition-transform duration-300" onerror="this.src='https://via.placeholder.com/40?text=DJ'">
+                <div class="flex flex-col">
+                    <span class="font-extrabold tracking-wider text-sm sm:text-lg text-[#D4AF37] font-poppins transition-colors group-hover:text-[#F4D03F]">BODUNRINDE JOSEPH</span>
+                    <span class="text-[9px] sm:text-[10px] uppercase tracking-widest text-muted-custom">DE-JOE TECH COMPANY</span>
+                </div>
+            </div>
+            
+            <!-- Desktop Action Controls -->
+            <div class="hidden lg:flex items-center space-x-6 text-sm font-medium text-muted-custom">
+                <a href="#home" class="hover:text-[#D4AF37] transition-all duration-200 hover:-translate-y-0.5 transform">Home</a>
+                <a href="#about" class="hover:text-[#D4AF37] transition-all duration-200 hover:-translate-y-0.5 transform">About</a>
+                <a href="#services" class="hover:text-[#D4AF37] transition-all duration-200 hover:-translate-y-0.5 transform">Services</a>
+                <a href="#projects" class="hover:text-[#D4AF37] transition-all duration-200 hover:-translate-y-0.5 transform">Projects</a>
+                <a href="#and-more" class="hover:text-[#D4AF37] transition-all duration-200 hover:-translate-y-0.5 transform">Graphics & More</a>
+                <button onclick="accessAdmin()" class="hover:text-[#D4AF37] transition-all duration-200 flex items-center gap-1 cursor-pointer"><i class="fa-solid fa-lock text-xs"></i> Admin</button>
+                
+                <!-- Theme Utility Toggle -->
+                <button id="theme-toggle" class="text-xl cursor-pointer hover:text-[#D4AF37] transition-colors p-1" title="Toggle Theme Matrix">
+                    <i id="theme-icon" class="fa-solid fa-sun text-[#D4AF37]"></i>
+                </button>
+                
+                <a href="#contact" class="px-4 py-2 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-300 rounded-sm">Contact</a>
+            </div>
+
+            <!-- Mobile Utilities Dropdown Wrapper -->
+            <div class="flex items-center gap-4 lg:hidden">
+                <button id="theme-toggle-mobile" class="text-xl cursor-pointer hover:text-[#D4AF37] transition-colors" title="Toggle Theme Matrix">
+                    <i id="theme-icon-mobile" class="fa-solid fa-sun text-[#D4AF37]"></i>
+                </button>
+                <button id="menu-btn" class="focus:outline-none cursor-pointer hover:text-[#D4AF37] text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dynamic Navbar Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-card-custom border-b border-custom px-6 py-6 flex flex-col space-y-4 font-medium transition-colors duration-300">
+            <a href="#home" class="mobile-link text-muted-custom hover:text-[#D4AF37]">Home</a>
+            <a href="#about" class="mobile-link text-muted-custom hover:text-[#D4AF37]">About</a>
+            <a href="#services" class="mobile-link text-muted-custom hover:text-[#D4AF37]">Services</a>
+            <a href="#projects" class="mobile-link text-muted-custom hover:text-[#D4AF37]">Projects</a>
+            <a href="#and-more" class="mobile-link text-muted-custom hover:text-[#D4AF37]">Graphics & More</a>
+            <button onclick="accessAdmin();" class="text-left text-muted-custom hover:text-[#D4AF37] cursor-pointer flex items-center gap-1"><i class="fa-solid fa-lock text-xs"></i> Admin Dashboard</button>
+            <a href="#contact" class="mobile-link text-[#D4AF37]">Contact Portfolio</a>
+        </div>
+    </nav>
+
+    <!-- --- HERO SECTION --- -->
+    <section id="home" class="pt-32 pb-20 md:py-40 min-h-screen flex items-center px-4 sm:px-6 bg-gradient-to-b from-var(--bg-primary) to-var(--bg-card)">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-card-custom border border-custom rounded-full">
+                    <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse shadow-[0_0_8px_#D4AF37]"></span>
+                    <span class="text-xs uppercase tracking-widest text-muted-custom font-semibold">AI Strategist & Solutions Architect</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold font-poppins leading-tight tracking-tight">
+                    Building Solutions.<br />
+                    <span class="text-[#D4AF37] drop-shadow-[0_2px_10px_rgba(212,175,55,0.2)]">Empowering People.</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-[#F4D03F] font-medium h-8 border-r-2 border-[#F4D03F] w-fit pr-1" id="typing-text"></p>
+
+                <p class="text-base sm:text-lg text-muted-custom max-w-xl leading-relaxed">
+                    Hi, I'm <strong class="font-semibold text-main">Bob Joseph</strong>. An Engineer, Technology Educator, Mentor, Speaker, and Digital Solutions Strategist focused on driving structural innovation.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="px-6 py-3 bg-[#D4AF37] text-black font-semibold rounded-sm hover:bg-[#F4D03F] transform hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] transition-all duration-300 text-sm flex items-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Instant Consulting</a>
+                    <a href="#projects" class="px-6 py-3 bg-card-custom border border-custom font-semibold rounded-sm hover:border-[#D4AF37] transform hover:-translate-y-1 hover:bg-[#D4AF37] hover:text-black transition-all duration-300 text-sm">View Projects Layout</a>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 group">
+                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-[#D4AF37]/40 animate-[spin_60s_linear_infinite]"></div>
+                    <div class="absolute inset-4 rounded-full border border-[#D4AF37] shadow-[0_0_30px_rgba(212,175,55,0.15)] group-hover:shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-500"></div>
+                    <img src="./dejoepix.png" alt="Bodunrinde Joseph" class="absolute inset-6 w-[calc(100%-48px)] h-[calc(100%-48px)] object-cover rounded-full bg-card-custom transform group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/400?text=BJ'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- CORE MONITORED PROJECTS ECOSYSTEM GRID --- -->
+    <section id="projects" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto reveal">
+        <div class="text-center max-w-xl mx-auto mb-16">
+            <h2 class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Project Implementations</h2>
+            <p class="text-2xl sm:text-3xl font-bold font-poppins mt-2">Core Engineering & Deployed Systems</p>
+        </div>
+
+        <!-- Comprehensive 6 Project Fluid Grid System Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Project 1 -->
+            <div class="bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="De-Wise Learning Hub" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">Educational App</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">De-Wise Learning Hub</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Comprehensive educational ecosystem engine engineered for structural video asset tracking and student dashboard log tracking management metrics.</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Request Deployment Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="https://images.unsplash.com/photo-1530563885674-66db50a1af13?auto=format&fit=crop&w=600&q=80" alt="DeWise Cloudline" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">Weather Platform</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">DeWise Cloudline</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Dynamic, high-efficiency meteorological data pipeline platform rendering real-time global atmospheric status matrix readouts instantly.</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Request Deployment Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1d704d3?auto=format&fit=crop&w=600&q=80" alt="CashMonie Wallet" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">Fintech Wallet</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">CashMonie Wallet</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Secure digital microfinance wallet framework logging encrypted transaction ledgers, system user data, and active balance tracking.</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Request Deployment Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80" alt="De-Wise Institute Website" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">School Website Portal</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">De-Wise Learning Field Institute</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Official institutional platform governing structural student information, academic logging registration, and full curriculum access frameworks.</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Request Deployment Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=600&q=80" alt="Faith Gospel Church" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">Church Platform</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">Faith Gospel Church</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Web layout architecture featuring comprehensive media archival catalogs alongside interactive community scheduling blueprints.</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Request Deployment Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            </div>
+            <!-- Project 6 -->
+            <div class="bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="Ranti Welding" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">Industrial Portfolio</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">Ranti Welding And fabricating industry</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">High-performance engineering platform layout designed exclusively for highlighting fabrication milestones and heavy welding service modules.</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Request Deployment Live <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- --- "AND MORE" EXCLUSIVE ADMIN INJECTED GRID --- -->
+    <section id="and-more" class="py-24 bg-card-custom px-4 sm:px-6 border-y border-custom transition-colors duration-300 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Dynamic Sub-Systems</h2>
+                    <p class="text-2xl sm:text-3xl font-bold font-poppins mt-2">Additional Graphics & Uploaded Modules</p>
+                </div>
+                <button onclick="accessAdmin()" class="mt-4 sm:mt-0 text-xs text-[#D4AF37] hover:text-[#F4D03F] font-bold tracking-widest uppercase border border-dashed border-[#D4AF37] px-4 py-2 hover:bg-[#D4AF37]/10 transition-colors cursor-pointer">
+                    <i class="fa-solid fa-circle-plus mr-1"></i> Upload Live Asset
+                </button>
+            </div>
+
+            <!-- This is where all live uploads seamlessly manifest -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="admin-uploads-container">
+                <!-- Fallback Info Node if no graphics uploaded yet -->
+                <div id="no-uploads-msg" class="col-span-full text-center py-12 border border-dashed border-custom text-muted-custom text-xs">
+                    <i class="fa-solid fa-folder-open text-2xl text-[#D4AF37] mb-2 block"></i> No auxiliary graphics or micro-links currently appended. Access the administration engine to commit system entries.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- INFINITE TESTIMONIAL MARQUEE ENGINE --- -->
+    <section class="py-20 overflow-hidden bg-gradient-to-r from-var(--bg-primary) via-var(--bg-card) to-var(--bg-primary) border-b border-custom transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-10 text-center">
+            <h2 class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Validated Reputation</h2>
+            <p class="text-2xl font-bold font-poppins mt-1">Enterprise Review Metrics</p>
+        </div>
+
+        <!-- Marquee Infinite Looping Container -->
+        <div class="relative w-full flex items-center">
+            <div class="animate-marquee space-x-6 flex flex-nowrap">
+                
+                <!-- Review A -->
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Ranti Welding Industry</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"The industrial portfolio website built by Bob Joseph completely modernized our corporate outreach strategy. Seamless structure and layout optimization!"</p>
+                </div>
+                <!-- Review B -->
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Richeli Computer Institute</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"Our specialized training app functions perfectly across all architectures. His technical strategy as an engineer is top-tier."</p>
+                </div>
+                <!-- Review C -->
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">DeWise Learning Field</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"The digital learning hub platform transformed our educational curriculum delivery entirely. Video asset tracking logs execute flawlessly."</p>
+                </div>
+                <!-- Review D -->
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Pastor Oloyede</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"An elegant, functional church platform built layout framework. Media archival distribution works instantly for our global congregation."</p>
+                </div>
+                <!-- Review E -->
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Akinware Olayinka D.</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"Learning complex engineering logic and digital skills under Mr. Bodunrinde was life-changing. He breaks down technical metrics effortlessly!"</p>
+                </div>
+                <!-- Review F -->
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Mary Anulika M.</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"The graphical and layout strategy instruction I received was world-class. Absolute mastery of technical teaching paradigms."</p>
+                </div>
+
+            </div>
+            <!-- Duplicated row for perfect seamless infinite animation loops -->
+            <div class="animate-marquee space-x-6 flex flex-nowrap aria-hidden='true'">
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Ranti Welding Industry</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"The industrial portfolio website built by Bob Joseph completely modernized our corporate outreach strategy. Seamless structure and layout optimization!"</p>
+                </div>
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Richeli Computer Institute</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"Our specialized training app functions perfectly across all architectures. His technical strategy as an engineer is top-tier."</p>
+                </div>
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">DeWise Learning Field</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"The digital learning hub platform transformed our educational curriculum delivery entirely. Video asset tracking logs execute flawlessly."</p>
+                </div>
+                <div class="w-[300px] sm:w-[400px] bg-card-custom border border-custom p-6 rounded-sm shadow-md shrink-0">
+                    <div class="flex items-center justify-between mb-3"><h4 class="font-bold text-sm font-poppins text-[#D4AF37]">Pastor Oloyede</h4><span class="text-xs text-[#D4AF37]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></div>
+                    <p class="text-xs text-muted-custom leading-relaxed">"An elegant, functional church platform built layout framework. Media archival distribution works instantly for our global congregation."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- ABOUT SUMMARY TIMELINE --- -->
+    <section id="about" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5">
+                <h2 class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">The Journey</h2>
+                <h3 class="text-2xl sm:text-3xl font-bold font-poppins mt-2 mb-6">Bridging Engineering Logic with Educational Vision</h3>
+                <p class="text-muted-custom text-sm leading-relaxed mb-4">
+                    With an academic foundation in Electrical Electronic Engineering, I approach tech development, telecom networking, and software frameworks systematically.
+                </p>
+                <p class="text-muted-custom text-sm leading-relaxed">
+                    As the Founder of DE-WISE Learning Field Institute and DE-JOE TECH COMPANY, I turn modern concepts into deployed solutions while mentoring the next wave of tech builders.
+                </p>
+            </div>
+            <div class="lg:col-span-7 bg-card-custom border border-custom p-6 sm:p-8 rounded-sm shadow-xl transition-colors duration-300">
+                <h4 class="text-sm uppercase tracking-wider text-[#D4AF37] font-semibold mb-6">Operational Milestones</h4>
+                <div class="space-y-4 text-xs border-l-2 border-[#333333] pl-4">
+                    <div class="relative"><span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-[#D4AF37]"></span><p class="font-semibold text-main">Electrical Electronic Engineer & Telecom Engineer</p></div>
+                    <div class="relative"><span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-[#B0B0B0]"></span><p class="text-muted-custom">Award-winning Mathematics & Tech Educator (5 Consecutive Years)</p></div>
+                    <div class="relative"><span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-[#B0B0B0]"></span><p class="text-muted-custom">Full-Stack App Developer & Web Systems Strategist</p></div>
+                    <div class="relative"><span class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-[#D4AF37]"></span><p class="font-semibold text-main">Founder, DE-WISE Learning Field Institute & Hub Ecosystem</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- TECHNICAL SERVICES METRICS --- -->
+    <section id="services" class="py-24 bg-card-custom border-t border-custom px-4 sm:px-6 transition-colors duration-300 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Expertise Architecture</h2>
+                <p class="text-2xl sm:text-3xl font-bold font-poppins mt-2">Professional Infrastructure & Technical Services</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-b from-var(--bg-primary) to-var(--bg-card) p-8 border border-custom hover:border-[#D4AF37]/60 transform hover:-translate-y-2 shadow-lg transition-all duration-300 rounded-sm">
+                    <i class="fa-solid fa-tower-cell text-2xl text-[#D4AF37] mb-4"></i>
+                    <h3 class="text-lg font-bold font-poppins mb-2">Engineering</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Telecom infrastructure, strategic solar cell installation layouts, and detailed industrial electrical grid management setups.</p>
+                </div>
+                <div class="bg-gradient-to-b from-var(--bg-primary) to-var(--bg-card) p-8 border border-custom hover:border-[#D4AF37]/60 transform hover:-translate-y-2 shadow-lg transition-all duration-300 rounded-sm">
+                    <i class="fa-solid fa-code text-2xl text-[#D4AF37] mb-4"></i>
+                    <h3 class="text-lg font-bold font-poppins mb-2">Web Development</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Deploying complex systems using HTML, CSS, JavaScript, and React. Crafting cross-platform mobile apps and launchers.</p>
+                </div>
+                <div class="bg-gradient-to-b from-var(--bg-primary) to-var(--bg-card) p-8 border border-custom hover:border-[#D4AF37]/60 transform hover:-translate-y-2 shadow-lg transition-all duration-300 rounded-sm">
+                    <i class="fa-solid fa-bezier-curve text-2xl text-[#D4AF37] mb-4"></i>
+                    <h3 class="text-lg font-bold font-poppins mb-2">Branding & Motion</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">High-end corporate graphic system layout design, complex 3D asset modeling strategy, and custom e-learning animations.</p>
+                </div>
+                <div class="bg-gradient-to-b from-var(--bg-primary) to-var(--bg-card) p-8 border border-custom hover:border-[#D4AF37]/60 transform hover:-translate-y-2 shadow-lg transition-all duration-300 rounded-sm">
+                    <i class="fa-solid fa-microphone-lines text-2xl text-[#D4AF37] mb-4"></i>
+                    <h3 class="text-lg font-bold font-poppins mb-2">Public Keynotes</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">Delivering expert sessions on corporate tech integrations, scalable leadership systems, and tailored youth mentorship blueprints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- --- CONTACT TRANSMISSION INTAKE --- -->
+    <section id="contact" class="py-24 px-4 sm:px-6 max-w-7xl mx-auto reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <h2 class="text-xs uppercase tracking-widest text-[#D4AF37] font-bold">Inquiries & Bookings</h2>
+                    <p class="text-2xl sm:text-3xl font-bold font-poppins mt-2">Let’s Orchestrate Innovation</p>
+                </div>
+                <p class="text-muted-custom text-sm leading-relaxed">
+                    Contact me for corporate telecom networking, custom dashboard builds, engineering consultations, or keynote events.
+                </p>
+                <div class="space-y-4 pt-4 text-xs text-muted-custom">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-[#D4AF37] w-4"></i>
+                        <span>+234 913 358 8595 / +234 812 346 2772</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-envelope text-[#D4AF37] w-4"></i>
+                        <span>bodzfunsho@gmail.com</span>
+                    </div>
+                </div>
+                <div class="flex space-x-4 pt-2">
+                    <a href="https://dewise-studio.github.io" target="_blank" class="p-2 bg-card-custom border border-custom rounded-sm hover:border-[#D4AF37] text-muted-custom hover:text-white transition-all duration-200"><i class="fa-brands fa-github text-lg"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="p-2 bg-card-custom border border-custom rounded-sm hover:border-[#D4AF37] text-muted-custom hover:text-white transition-all duration-200"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="p-2 bg-card-custom border border-custom rounded-sm hover:border-[#D4AF37] text-muted-custom hover:text-white transition-all duration-200"><i class="fa-brands fa-instagram text-lg"></i></a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <form id="contact-form" class="bg-card-custom p-6 sm:p-8 border border-custom rounded-sm space-y-4 shadow-xl transition-colors duration-300">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs uppercase text-muted-custom font-medium block mb-2">Name</label>
+                            <input type="text" required class="w-full bg-var(--bg-primary) border border-custom rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-[#D4AF37] text-main transition-colors" placeholder="Your Name" />
+                        </div>
+                        <div>
+                            <label class="text-xs uppercase text-muted-custom font-medium block mb-2">Email</label>
+                            <input type="email" required class="w-full bg-var(--bg-primary) border border-custom rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-[#D4AF37] text-main transition-colors" placeholder="your@email.com" />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-xs uppercase text-muted-custom font-medium block mb-2">Subject</label>
+                        <input type="text" required class="w-full bg-var(--bg-primary) border border-custom rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-[#D4AF37] text-main transition-colors" placeholder="Project Engagement" />
+                    </div>
+                    <div>
+                        <label class="text-xs uppercase text-muted-custom font-medium block mb-2">Message</label>
+                        <textarea rows="4" required class="w-full bg-var(--bg-primary) border border-custom rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-[#D4AF37] resize-none text-main transition-colors" placeholder="Provide operational criteria..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-[#D4AF37] text-black font-semibold rounded-sm hover:bg-[#F4D03F] hover:shadow-[0_4px_15px_rgba(212,175,55,0.3)] transition-all duration-300 text-sm uppercase tracking-wider cursor-pointer">Transmit Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- HIDDEN ADMINISTRATION PANEL CONTROL OVERLAY --- -->
+    <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center hidden p-4">
+        <div class="bg-[#1A1A1A] border-2 border-[#D4AF37] w-full max-w-lg p-6 sm:p-8 rounded-sm shadow-2xl relative text-white">
+            <button onclick="closeAdmin()" class="absolute top-4 right-4 text-[#B0B0B0] hover:text-white cursor-pointer text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="font-poppins font-bold text-xl sm:text-2xl text-[#D4AF37] mb-1 flex items-center gap-2"><i class="fa-solid fa-sliders text-lg"></i> DE-JOE Admin Engine</h3>
+            <p class="text-xs text-[#B0B0B0] mb-6">Upload secondary project layouts, graphics designs, or auxiliary links into the visible runtime page flow.</p>
+            
+            <form id="admin-upload-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] uppercase text-[#B0B0B0] block mb-1 tracking-wider">Asset Title Name</label>
+                        <input type="text" id="adm-title" required class="w-full bg-[#222222] border border-[#2A2A2A] rounded-sm p-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. Modern Agbada Layout">
+                    </div>
+                    <div>
+                        <label class="text-[10px] uppercase text-[#B0B0B0] block mb-1 tracking-wider">Operational Tag</label>
+                        <input type="text" id="adm-tag" required class="w-full bg-[#222222] border border-[#2A2A2A] rounded-sm p-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]" placeholder="e.g. Graphic Showcase / App Link">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase text-[#B0B0B0] block mb-1 tracking-wider">Graphic Asset Image URL</label>
+                    <input type="url" id="adm-img" required class="w-full bg-[#222222] border border-[#2A2A2A] rounded-sm p-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]" placeholder="https://images.unsplash.com/...">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase text-[#B0B0B0] block mb-1 tracking-wider">Asset Architecture Summary</label>
+                    <textarea id="adm-desc" rows="3" required class="w-full bg-[#222222] border border-[#2A2A2A] rounded-sm p-3 text-sm text-white focus:outline-none focus:border-[#D4AF37] resize-none" placeholder="Enter short specification matrix details..."></textarea>
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase text-[#B0B0B0] block mb-1 tracking-wider">System Star Quality</label>
+                    <select id="adm-stars" class="w-full bg-[#222222] border border-[#2A2A2A] rounded-sm p-3 text-sm text-white focus:outline-none focus:border-[#D4AF37]">
+                        <option value="5">5 Stars Systems Validation</option>
+                        <option value="4">4 Stars Systems Validation</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 bg-[#D4AF37] text-black font-semibold text-xs uppercase tracking-widest hover:bg-[#F4D03F] transition-all cursor-pointer">Incorporate Dynamic Blueprint Asset</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- --- FOOTER --- -->
+    <footer class="bg-card-custom border-t border-custom py-8 text-center text-xs text-muted-custom transition-colors duration-300">
+        <p>&copy; 2026 DE-JOE TECH COMPANY. All Rights Reserved. Tailored for Institutional Impact.</p>
+    </footer>
+
+    <!-- --- SYSTEM SCRIPTS --- -->
+    <script>
+        // --- 1. DYNAMIC THEME CONTROLLER ENGINE ---
+        const htmlEl = document.documentElement;
+        const toggleBtn = document.getElementById('theme-toggle');
+        const toggleIcon = document.getElementById('theme-icon');
+        const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const toggleIconMobile = document.getElementById('theme-icon-mobile');
+
+        function toggleTheme() {
+            if (htmlEl.classList.contains('dark')) {
+                htmlEl.classList.remove('dark');
+                toggleIcon.className = "fa-solid fa-moon text-black";
+                toggleIconMobile.className = "fa-solid fa-moon text-black";
+                localStorage.setItem('portfolio-theme', 'light');
+            } else {
+                htmlEl.classList.add('dark');
+                toggleIcon.className = "fa-solid fa-sun text-[#D4AF37]";
+                toggleIconMobile.className = "fa-solid fa-sun text-[#D4AF37]";
+                localStorage.setItem('portfolio-theme', 'dark');
+            }
+        }
+        toggleBtn.addEventListener('click', toggleTheme);
+        toggleBtnMobile.addEventListener('click', toggleTheme);
+
+        // --- 2. MOBILE RESPONSIVE HAMBURGER NAVIGATION ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+        // --- 3. DYNAMIC HERO TYPING EFFECT ENGINE ---
+        const strings = ["Telecom Engineer.", "Full-Stack Web Developer.", "Digital Trainer & Educator.", "Public Speaker & Strategist.", "Technology Innovator."];
+        let stringIdx = 0, charIdx = 0, isDeleting = false;
+        const targetEl = document.getElementById('typing-text');
+
+        function typeEffect() {
+            const currentString = strings[stringIdx];
+            if (isDeleting) {
+                targetEl.textContent = currentString.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                targetEl.textContent = currentString.substring(0, charIdx + 1);
+                charIdx++;
+            }
+            if (!isDeleting && charIdx === currentString.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                stringIdx = (stringIdx + 1) % strings.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? 40 : 80);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => setTimeout(typeEffect, 500));
+
+        // --- 4. ENGINE PROGRESS BAR & VIEW REVEAL TRIPPERS ---
+        const progressBar = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            progressBar.style.width = ((winScroll / height) * 100) + "%";
+
+            document.querySelectorAll('.reveal').forEach(r => {
+                if(r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add('active');
+            });
+        });
+        // --- 5. ADMINISTRATION CONTROL ENGINE GATE ---
+        function accessAdmin() {
+            mobileMenu.classList.add('hidden');
+            const gatewayAttempt = prompt("Enter Administration Infrastructure Access Key Password:");
+            if (gatewayAttempt === "Bob@1") {
+                document.getElementById('admin-modal').classList.remove('hidden');
+                document.getElementById('admin-modal').classList.add('flex');
+            } else if (gatewayAttempt !== null) {
+                alert("Authorization Rejected: Invalid security credentials issued.");
+            }
+        }
+        function closeAdmin() {
+            document.getElementById('admin-modal').classList.add('hidden');
+            document.getElementById('admin-modal').classList.remove('flex');
+        }
+
+        // Handle dynamic live injection inside the "And More" portfolio section layout
+        document.getElementById('admin-upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('adm-title').value;
+            const tag = document.getElementById('adm-tag').value;
+            const img = document.getElementById('adm-img').value;
+            const desc = document.getElementById('adm-desc').value;
+            const stars = document.getElementById('adm-stars').value;
+
+            const uploadsContainer = document.getElementById('admin-uploads-container');
+            const fallbackMsg = document.getElementById('no-uploads-msg');
+            
+            if (fallbackMsg) fallbackMsg.remove();
+            
+            let starsHTML = '';
+            for(let i=0; i<5; i++) {
+                if(i < stars) starsHTML += `<i class="fa-solid fa-star"></i>`;
+                else starsHTML += `<i class="fa-regular fa-star"></i>`;
+            }
+
+            const dynamicCard = document.createElement('div');
+            dynamicCard.className = "bg-card-custom border border-custom rounded-sm overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 hover:border-[#D4AF37]/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group";
+            dynamicCard.innerHTML = `
+                <div class="relative overflow-hidden h-48 bg-[#2C2C2C]">
+                    <img src="${img}" alt="${title}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/600x400?text=Asset+Showcase'">
+                </div>
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] text-[#D4AF37] font-mono tracking-widest uppercase font-bold">${tag}</span>
+                        <div class="text-[#D4AF37] text-xs flex gap-0.5">${starsHTML}</div>
+                    </div>
+                    <h3 class="text-xl font-bold font-poppins mb-2 group-hover:text-[#D4AF37] transition-colors">${title}</h3>
+                    <p class="text-xs text-muted-custom leading-relaxed">${desc}</p>
+                </div>
+                <div class="px-6 pb-6 pt-4 border-t border-custom text-xs font-semibold">
+                    <a href="https://wa.me/2349133588595" target="_blank" class="text-[#D4AF37] hover:text-[#F4D03F] inline-flex items-center gap-1 hover:underline">Inquire Architecture Layout <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+                </div>
+            `;
+            
+            uploadsContainer.insertBefore(dynamicCard, uploadsContainer.firstChild);
+            document.getElementById('admin-upload-form').reset();
+            closeAdmin();
+            alert("Blueprint Node Committed! Visual component rendered instantly within 'Graphics & More'.");
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Inquiry Dispatched Successfully! Operational placeholder executed.");
+        });
+    </script>
+</body>
+</html>
